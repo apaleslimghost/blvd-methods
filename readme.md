@@ -1,12 +1,12 @@
 <h1 align="center">
-	blvd-methods
+  blvd-methods
 </h1>
 
 Combinators to wrap HTTP handlers and filter based on method.
 
 ```javascript
 http.createServer(methods.put(function(req, res) {
-	assert(req.method === 'put');
+  assert(req.method === 'put');
 }));
 ```
 
@@ -18,11 +18,11 @@ If you're using something other than Node HTTP, and `req` isn't the first argume
 
 ```javascript
 var get = methods.get_(function getMethod() {
-	return this.method; // e.g. Koa
+  return this.method; // e.g. Koa
 });
 
 get(function *(next) {
-	// ...
+  // ...
 });
 ```
 
@@ -30,11 +30,11 @@ Or override them all at once with `withGetMethod`:
 
 ```javascript
 var methods = require('blvd-methods').withGetMethod(function getMethod() {
-	return this.method; // e.g. Koa
+  return this.method; // e.g. Koa
 });
 
 methods.get(function *(next) {
-	// ...
+  // ...
 });
 ```
 
@@ -43,8 +43,8 @@ methods.get(function *(next) {
 
 ```javascript
 route([
-	['/',  methods.get(function(req, res) { /* ... */})],
-	['/', methods.post(function(req, res) { /* ... */})],
+  ['/',  methods.get(function(req, res) { /* ... */})],
+  ['/', methods.post(function(req, res) { /* ... */})],
 ]);
 ```
 
