@@ -1,5 +1,12 @@
 <h1 align="center">
-  blvd-methods
+  blvd-methods<br>
+
+  <a href="http://badge.fury.io/js/blvd-methods">
+    <img src="https://badge.fury.io/js/blvd-methods.svg" alt="npm version">
+  </a>
+  <a href="https://travis-ci.org/quarterto/blvd-methods">
+    <img src="https://travis-ci.org/quarterto/blvd-methods.svg" alt="Build status">
+  </a>
 </h1>
 
 Combinators to wrap HTTP handlers and filter based on method.
