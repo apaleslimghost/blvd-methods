@@ -1,6 +1,6 @@
 {
   "name": "blvd-methods",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Method combinators for HTTP handlers",
   "main": "index.js",
   "scripts": {
