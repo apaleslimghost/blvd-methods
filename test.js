@@ -31,8 +31,8 @@ methods.forEach(function(method) {
 			expect(handler).was.calledWith(req);
 		},
 
-		'getMethod': function() {
-			var wrapper = μ[camelCase(method) + '_'](function getMethod_() {
+		'withGetMethod inner': function() {
+			var wrapper = μ[camelCase(method)].withGetMethod(function getMethod_() {
 				return method;
 			});
 			var handler = sinon.spy();
@@ -42,7 +42,7 @@ methods.forEach(function(method) {
 			expect(handler).was.called();
 		},
 
-		'withGetMethod': function() {
+		'withGetMethod outer': function() {
 			var wrapper = μ.withGetMethod(function getMethod_() {
 				return method;
 			})[camelCase(method)];
@@ -51,6 +51,24 @@ methods.forEach(function(method) {
 
 			wrapped({method: method});
 			expect(handler).was.called();
+		},
+
+		'withOnFail inner': function() {
+			var wrapper = μ[camelCase(method)].withOnFail(function onFail_() {
+				return 'foo';
+			});
+			var wrapped = wrapper(function(){});
+
+			expect(wrapped({method: 'nope'})).to.be('foo');
+		},
+
+		'withOnFail outer': function() {
+			var wrapper = μ.withOnFail(function onFail_() {
+				return 'foo';
+			})[camelCase(method)];
+			var wrapped = wrapper(function(){});
+
+			expect(wrapped({method: 'nope'})).to.be('foo');
 		}
 	};
 });
